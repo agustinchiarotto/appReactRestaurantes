@@ -3,13 +3,14 @@ import * as firebase from 'firebase'
 import  UserGuest  from "./UserGuest";
 import  UserLoger  from "./UserLoger";
 import Loading from "../../components/Loading"
+import firebaseApp from "../../utils/firebase";
 
 const Acount = () => {
 
     const [login,setLogin] = useState(null);
 
     useEffect(()=>{
-            firebase.auth().onAuthStateChanged((user)=>{
+        firebase.auth().onAuthStateChanged((user)=>{
                 !user ? setLogin(false) : setLogin(true);  
             })
     }, [])

@@ -11,6 +11,8 @@ import AccountStack from './AccountStack';
 
 const Tab = createBottomTabNavigator();
 
+
+
 const Navigation = () => {
 	return (
 		<NavigationContainer>

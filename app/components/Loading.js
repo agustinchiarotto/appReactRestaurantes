@@ -4,14 +4,14 @@ import { Overlay } from 'react-native-elements';
 
 export default (Loading = (props) => {
 	const { isVisible, text } = props;
-
 	return (
-        <Overlay 
-        isVisible={isVisible}
-         windowBackgroundColor="rgba(0,0,0,0.5)" 
-         overlayBackGroundColor = "transparent"
-         overlayStyle= {styles.overlay}>
-			<View style = {styles.view}>
+		<Overlay
+			isVisible={isVisible}
+			windowBackgroundColor="rgba(0,0,0,0.5)"
+			overlayBackGroundColor="transparent"
+			overlayStyle={styles.overlay}
+		>
+			<View style={styles.view}>
 				<ActivityIndicator size="large" color="#00a680" />
 				{text && <Text style={styles.text}>{text}</Text>}
 			</View>
@@ -27,15 +27,15 @@ const styles = StyleSheet.create({
 		borderColor: '#00a680',
 		width: 2,
 		borderRadius: 10
-    },
-    view : {
-        flex: 1,
-        alignItems:'center',
-        justifyContent: 'center'
-    },
-    text :{
-        color:'#00a680',
-        textTransform: 'uppercase',
-        marginTop:10
-    }
+	},
+	view: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	text: {
+		color: '#00a680',
+		textTransform: 'uppercase',
+		marginTop: 10
+	}
 });
