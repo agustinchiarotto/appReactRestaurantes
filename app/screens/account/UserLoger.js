@@ -12,15 +12,18 @@ const UserLoger = () => {
 	const toasRef = useRef();
 	const [ loading, setLoading ] = useState(false);
     const [ loadingText, setLoadingText ] = useState('');
-    const [userInfo, setUserInfo] = useState("")
+	const [userInfo, setUserInfo] = useState("");
+	const [reloadUserInfo, setReloadUserInfo] = useState(false)
 
 	//Doble parentesis para que la funcion se autoejecute
+	// usa un estado para darle info de cuando quiero que se ejecute esto
 	useEffect(() => {
 		(async () => {
             const user = await firebase.auth().currentUser;
             setUserInfo(user);
 		})();
-	}, []);
+		setReloadUserInfo(false); //esto ahce para que se cambie el estado a true desde afuera y asi se pueda ejecutar
+	}, [reloadUserInfo]);
 
 
     //entre { userInfo && } es un condicional tipo ngif
@@ -28,7 +31,7 @@ const UserLoger = () => {
 	return (
 		<View style={styles.viewUserInfo}>
          <InfoUser toasRef={toasRef} userInfo={userInfo} setLoading ={setLoading} setLoadingText = {setLoadingText} />
-			<AccounOption />
+			<AccounOption userInfo={userInfo} toasRef={toasRef} setReloadUserInfo={setReloadUserInfo} />
 
 			<Button
 				title="Cerrar sesion"
